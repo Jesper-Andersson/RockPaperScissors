@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualBasic;
 using System;
 
-namespace ConsoleApp1
+namespace Rps
 {
     static internal class Rps
     {
@@ -18,7 +18,7 @@ namespace ConsoleApp1
                 int gameResult = GameLoop();
 
                 if (gameResult == 1) { wins++; } 
-                else if (gameResult == 2) {  }
+                else if (gameResult == 2) { return;  }
                 else { wins--; }
             }
         }
@@ -48,8 +48,8 @@ namespace ConsoleApp1
                 }
                 else
                 {
-                    validInput = false;
                     Console.WriteLine("Invalid input, try again:");
+                    validInput = false;
                 }
             }
 
@@ -59,24 +59,32 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("You Win!");
                 Console.WriteLine(moves[choice] + " beats " + moves[botChoice] + "!");
+
+                Console.WriteLine("Press any key to play again...");
+                Console.ReadLine();
+
                 return 1;
             }
             else if (choice == botChoice)
             {
                 Console.WriteLine("Draw.");
-                Console.WriteLine("You both picked" + moves[choice] + "!");
+                Console.WriteLine("You both picked " + moves[choice] + "!");
+
+                Console.WriteLine("Press any key to play again...");
+                Console.ReadLine();
+
                 return 2;
             }
             else
             {
                 Console.WriteLine("You Lose!");
                 Console.WriteLine(moves[botChoice] + " beats " + moves[choice] + "!");
-                return 0;
-            }
 
-            Console.WriteLine("Press any key to play again...");
-            Console.ReadLine();
-            
+                Console.WriteLine("Press any key to play again...");
+                Console.ReadLine();
+
+                return 0;
+            }  
         }
     }
 }
