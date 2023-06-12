@@ -18,7 +18,6 @@
 
 #include <cstdlib>
 #include <ctime>
-#include <conio.h>
 #include <iostream>
 
 bool is_playing = true;
