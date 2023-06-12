@@ -2,27 +2,44 @@
 #include <ctime>
 #include <iostream>
 /*	
-	0. Rock
-	1. Paper	
-    2. Scissors
-*/	
+	0. Scissors
+	1. Rock	
+    2. Paper
+*/
 
-int main()
-{
+bool is_playing = true;
+
+int player_score = 0;
+int opponent_score = 0;
+
+int temp_score;
+
+short player_input;
+
+void GameRound() {
+	std::cout << "Player: " << player_score << std::endl << "Opponent: " << opponent_score << std::endl;
+
+	short selection = std::rand() % 3;
+
+	std::cout << selection;
+	
+	std::cin.get();
+
+	return;
+}
+
+int main() {
 	//Sets the seed
 	std::srand(std::time(nullptr));
 
-	enum Plays
+	short scissors = 0;
+	short rock = 1;
+	short paper = 2;
+	
+	while (is_playing)
 	{
-		
-	};
-
-	for (int i = 0; i < 15; i++)
-	{
-		int selection = std::rand() % 3;
-
-		std::cout << selection;
-
-		std::cin.get();
+		GameRound();
 	}
+
+	return 0;
 }
