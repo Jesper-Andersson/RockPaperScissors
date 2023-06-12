@@ -1,4 +1,4 @@
-# Rock Paper Scissors
+# Rock Paper Scissors [![CMake](https://github.com/Jesper-Andersson/RockPaperScissors/actions/workflows/cmake.yml/badge.svg?branch=main)](https://github.com/Jesper-Andersson/RockPaperScissors/actions/workflows/cmake.yml)
 
 ## Info
 
