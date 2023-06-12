@@ -96,6 +96,8 @@ int main() {
 
 	std::cout << "Game Over.";
 
+	std::cin;
+
 	//std::cout << "Play Again?: [Y/N]"
 
 	return 0;
