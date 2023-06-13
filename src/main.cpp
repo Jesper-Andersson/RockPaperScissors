@@ -86,7 +86,7 @@ int main() {
 		}
 	}
 
-	if (player_score < opponent_score) {
+	if (player_score > opponent_score) {
 		std::cout << std::endl << "You Won the Game" << std::endl;
 	}
 	else {
