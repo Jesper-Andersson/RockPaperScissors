@@ -32,12 +32,12 @@ short player_input;
 std::string moves[] = { "Scissors", "Rock", "Paper" };
 
 void GameRound() {
-	std::cout << "Best of: " << max_score << "." << std::endl << "------------------" << std::endl;
-	std::cout << "Player: " << player_score << std::endl << "Opponent: " << opponent_score << std::endl;
+	std::cout << "Best of: " << max_score << "." << "\n" << "------------------" << "\n";
+	std::cout << "Player: " << player_score << "\n" << "Opponent: " << opponent_score << "\n";
 
 	short selection = std::rand() % 3;
 
-	std::cout << "0. Scissors" << std::endl << "1. Rock" << std::endl << "2. Paper" << std::endl;
+	std::cout << "0. Scissors\n1. Rock\n2. Paper\n";
 	
 	std::cout << "You choose: ";
 
@@ -45,23 +45,23 @@ void GameRound() {
 	std::cin.clear();
 	std::cin.ignore(10000, '\n');
 
-	std::cout << std::endl;
+	std::cout << "\n";
 
 	//	0. Scissors, 1. Rock, 2. Paper	
 
 	if (player_input + 1 == selection || player_input - 2 == selection) {
 		opponent_score += 1;
-		std::cout << "Opponent Won Turn!" << std::endl << std::endl;
+		std::cout << "Opponent Won Turn!" << "\n\n";
 	}
 	else if (player_input - 1 == selection || player_input + 2 == selection) {
 		player_score += 1;
-		std::cout << "You Won the Turn!" << std::endl << std::endl;
+		std::cout << "You Won the Turn!" << "\n\n";
 	} 
 	else{
-		std::cout << "Round Draw." << std::endl << std::endl;
+		std::cout << "Round Draw." << "\n\n";
 	}
 
-	std::cout << "You: " << moves[player_input] << " vs Opponent: " << moves[selection] << std::endl; 
+	std::cout << "You: " << moves[player_input] << " vs Opponent: " << moves[selection] << "\n"; 
 
 	return;
 }
@@ -76,7 +76,7 @@ int main() {
 	std::cin.clear();
 	std::cin.ignore(10000, '\n');
 
-	std::cout << std::endl;
+	std::cout << "\n";
 	
 	while (is_playing)
 	{
@@ -89,10 +89,10 @@ int main() {
 	}
 
 	if (player_score > opponent_score) {
-		std::cout << std::endl << "You Won the Game" << std::endl;
+		std::cout << "\n" << "You Won the Game" << "\n";
 	}
 	else {
-		std::cout << std::endl << "You Lost the Game" << std::endl;
+		std::cout << "\n" << "You Lost the Game" << "\n";
 	}
 
 	std::cout << "Game Over.";
@@ -100,6 +100,4 @@ int main() {
 	std::cin.get();
 
 	//std::cout << "Play Again?: [Y/N]"
-
-	return 0;
 }
