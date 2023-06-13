@@ -32,7 +32,7 @@ short player_input;
 std::string moves[] = { "Scissors", "Rock", "Paper" };
 
 void GameRound() {
-	std::cout << "Best of: " << max_score << "." << std::endl;
+	std::cout << "Best of: " << max_score << "." << std::endl << "------------------" << std::endl;
 	std::cout << "Player: " << player_score << std::endl << "Opponent: " << opponent_score << std::endl;
 
 	short selection = std::rand() % 3;
@@ -51,14 +51,14 @@ void GameRound() {
 
 	if (player_input + 1 == selection || player_input - 2 == selection) {
 		opponent_score += 1;
-		std::cout << "Opponent Won Turn" << std::endl;
+		std::cout << "Opponent Won Turn!" << std::endl << std::endl;
 	}
 	else if (player_input - 1 == selection || player_input + 2 == selection) {
 		player_score += 1;
-		std::cout << "You Won the Turn!" << std::endl;
+		std::cout << "You Won the Turn!" << std::endl << std::endl;
 	} 
 	else{
-		std::cout << "Round Draw." << std::endl;
+		std::cout << "Round Draw." << std::endl << std::endl;
 	}
 
 	std::cout << "You: " << moves[player_input] << " vs Opponent: " << moves[selection] << std::endl; 
@@ -75,6 +75,8 @@ int main() {
 	std::cin >> max_score; //TODO: SANITISE INPUT
 	std::cin.clear();
 	std::cin.ignore(10000, '\n');
+
+	std::cout << std::endl;
 	
 	while (is_playing)
 	{
@@ -95,7 +97,7 @@ int main() {
 
 	std::cout << "Game Over.";
 
-	std::cin;
+	std::cin.get();
 
 	//std::cout << "Play Again?: [Y/N]"
 
