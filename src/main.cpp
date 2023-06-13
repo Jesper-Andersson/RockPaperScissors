@@ -1,6 +1,6 @@
 /*
 *Rock Paper Scissors Console application
-*Copyright (C) 2023  Jesper Andersson <ajesper00@gmail.com>
+*Copyright (C) 2023 Jesper Andersson <ajesper00@gmail.com>
 *
 *This program is free software: you can redistribute it and/or modify
 *it under the terms of the GNU General Public License as published by
@@ -22,12 +22,10 @@
 
 bool is_playing = true;
 
-int player_score = 0;
-int opponent_score = 0;
-
-int max_score;
-
-short player_input;
+short player_score = 0;
+short opponent_score = 0;
+short max_score;
+short player_selection;
 
 std::string moves[] = { "Scissors", "Rock", "Paper" };
 
@@ -41,7 +39,7 @@ void GameRound() {
 	
 	std::cout << "You choose: ";
 
-	std::cin >> player_input;  //TODO: SANITISE INPUT
+	std::cin >> player_selection;  //TODO: SANITISE INPUT
 	std::cin.clear();
 	std::cin.ignore(10000, '\n');
 
@@ -49,11 +47,11 @@ void GameRound() {
 
 	//	0. Scissors, 1. Rock, 2. Paper	
 
-	if (player_input + 1 == selection || player_input - 2 == selection) {
+	if (player_selection + 1 == selection || player_selection - 2 == selection) {
 		opponent_score += 1;
 		std::cout << "Opponent Won Turn!" << "\n\n";
 	}
-	else if (player_input - 1 == selection || player_input + 2 == selection) {
+	else if (player_selection - 1 == selection || player_selection + 2 == selection) {
 		player_score += 1;
 		std::cout << "You Won the Turn!" << "\n\n";
 	} 
@@ -61,16 +59,14 @@ void GameRound() {
 		std::cout << "Round Draw." << "\n\n";
 	}
 
-	std::cout << "You: " << moves[player_input] << " vs Opponent: " << moves[selection] << "\n"; 
-
-	return;
+	std::cout << "You: " << moves[player_selection] << " vs Opponent: " << moves[selection] << "\n"; 
 }
 
 int main() {
 	//Sets the seed
 	std::srand(std::time(nullptr));
 
-	std::cout << "Best of... ? (Max Score): ";
+	std::cout << "Best of...(Max Score): ";
 
 	std::cin >> max_score; //TODO: SANITISE INPUT
 	std::cin.clear();
