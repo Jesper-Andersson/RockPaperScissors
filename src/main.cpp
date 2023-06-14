@@ -21,6 +21,7 @@
 #include <iostream>
 
 bool is_playing = true;
+bool valid_input = false;
 
 short player_score = 0;
 short opponent_score = 0;
@@ -38,15 +39,27 @@ void GameRound() {
 	std::cout << "0. Scissors\n1. Rock\n2. Paper\n";
 	
 	std::cout << "You choose: ";
+	std::cin >> player_selection;
 
-	std::cin >> player_selection;  //TODO: SANITISE INPUT
-	std::cin.clear();
-	std::cin.ignore(10000, '\n');
+	// ! Negative (ex -1) input ends the game.
+	valid_input = false;
+	
+	while (!valid_input) {
+		if (std::cin.fail()) {
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+			std::cout << "Invalid Input, Try again:" << "\n";
+			std::cin >> max_score;
+		}
+		if (!std::cin.fail()) {
+			valid_input = true;
+		}
+	}
 
 	std::cout << "\n";
 
 	//	0. Scissors, 1. Rock, 2. Paper	
-
 	if (player_selection + 1 == selection || player_selection - 2 == selection) {
 		opponent_score += 1;
 		std::cout << "Opponent Won Turn!" << "\n\n";
@@ -66,11 +79,23 @@ int main() {
 	//Sets the seed
 	std::srand(std::time(nullptr));
 
-	std::cout << "Best of...(Max Score): ";
+	std::cout << "Best of...(Max Score, 1-100): ";
+	std::cin >> max_score; 
 
-	std::cin >> max_score; //TODO: SANITISE INPUT
-	std::cin.clear();
-	std::cin.ignore(10000, '\n');
+	valid_input = false;
+
+	while (!valid_input) {
+		if (std::cin.fail() || max_score > 0) {
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+			std::cout << "Invalid Input, Try again:" << "\n";
+			std::cin >> max_score;
+		}
+		if (!std::cin.fail()){
+			valid_input = true;
+		}
+	}
 
 	std::cout << "\n";
 	
